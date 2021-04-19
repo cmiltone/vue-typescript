@@ -110,11 +110,15 @@ export default Vue.extend({
     ],
     gradient: "rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)",
     drawerImage: false,
-    mini: false,
     drawer: null,
     image:
       "https://demos.creative-tim.com/material-dashboard-pro/assets/img/sidebar-1.jpg",
   }),
+  computed: {
+    mini() {
+      return this.$store.getters.mini;
+    },
+  },
   // computed: {
   //   ...get("user", ["dark", "gradient", "image"]),
   //   ...get("app", ["items", "version"]),
