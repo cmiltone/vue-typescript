@@ -24,6 +24,6 @@ export const routes: Array<RouteConfig> = [
     // this generates a separate chunk (not-found.[hash].js) for this route
     // which is lazy-loaded when the route is ../views/NotFound.vue
     component: () =>
-      import(/* webpackChunkName: "not-found" */ "@/views/NotFound.vue"),
+      import(/* webpackChunkName: "not-found" */ "@/views/404Page.vue"),
   },
 ];
