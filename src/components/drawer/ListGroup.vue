@@ -65,8 +65,8 @@ export default Vue.extend({
     },
   },
   computed: {
-    group() {
-      return ""; //this.genGroup(this.item.items);
+    group(): string {
+      return this.genGroup(this.item.items);
     },
     title() {
       const matches = this.item.title.match(/\b(\w)/g);
