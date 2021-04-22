@@ -24,25 +24,14 @@
 
     <template #append>
       <div class="pa-4 text-center">
-        <v-btn
-          class="text-none mb-4"
-          color="white"
-          href="https://vuetifyjs.com"
-          small
-          text
-        >
-          Documentation
+        <v-btn class="text-none mb-4" color="white" href="#" small text>
+          Policy
         </v-btn>
 
-        <v-btn
-          block
-          class="text-none"
-          color="secondary"
-          href="https://store.vuetifyjs.com/products/vuetify-material-dashboard-pro"
-        >
+        <v-btn block class="text-none" color="secondary" href="#">
           <v-icon left> mdi-package-up </v-icon>
 
-          Upgrade to Pro
+          Footer
         </v-btn>
       </div>
     </template>
@@ -54,9 +43,10 @@
 <script lang="ts">
 import Vue from "vue";
 
+import { navLinks } from "./nav-links";
+
 export default Vue.extend({
   name: "Drawer",
-
   components: {
     DrawerHeader: () =>
       import(
@@ -71,52 +61,28 @@ export default Vue.extend({
   },
   data: () => ({
     dark: false,
-    items: [
-      {
-        title: "Dashboard",
-        icon: "mdi-view-dashboard",
-        to: "/",
-      },
-      {
-        title: "User Profile",
-        icon: "mdi-account",
-        to: "/components/profile/",
-      },
-      {
-        title: "Regular Tables",
-        icon: "mdi-clipboard-outline",
-        to: "/tables/regular/",
-      },
-      {
-        title: "Typography",
-        icon: "mdi-format-font",
-        to: "/components/typography/",
-      },
-      {
-        title: "Icons",
-        icon: "mdi-chart-bubble",
-        to: "/components/icons/",
-      },
-      {
-        title: "Google Maps",
-        icon: "mdi-map-marker",
-        to: "/maps/google/",
-      },
-      {
-        title: "Notifications",
-        icon: "mdi-bell",
-        to: "/components/notifications/",
-      },
-    ],
-    gradient: "rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)",
-    drawerImage: false,
-    drawer: null,
+    items: navLinks,
+    gradient: "rgba(228, 226, 226, 1), rgba(255, 255, 255, 0.7)",
+    drawerImage: true,
     image:
       "https://demos.creative-tim.com/material-dashboard-pro/assets/img/sidebar-1.jpg",
   }),
   computed: {
-    mini() {
-      return this.$store.getters.mini;
+    mini: {
+      get() {
+        return this.$store.getters.mini;
+      },
+      set() {
+        this.$store.dispatch("toggleMini");
+      },
+    },
+    drawer: {
+      get() {
+        return this.$store.getters.drawer;
+      },
+      set(val) {
+        this.$store.dispatch("setDrawer", val);
+      },
     },
   },
   // computed: {

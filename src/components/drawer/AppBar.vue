@@ -10,7 +10,7 @@
     height="70"
     flat
   >
-    <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer" />
+    <v-app-bar-nav-icon class="hidden-md-and-up" @click="setDrawer" />
 
     <drawer-toggle class="hidden-sm-and-down" />
 
@@ -63,11 +63,28 @@ export default Vue.extend({
     //   'mini',
     // ]),
     // name: get('route/name'),
+    mini: {
+      get() {
+        return this.$store.getters.mini;
+      },
+      set() {
+        this.setMini();
+      },
+    },
+    drawer() {
+      return this.$store.getters.drawer;
+    },
   },
   data: () => ({
-    mini: false,
-    drawer: null,
     // name: "route/name",
   }),
+  methods: {
+    setMini() {
+      this.$store.dispatch("toggleMini");
+    },
+    setDrawer() {
+      this.$store.dispatch("setDrawer", !this.drawer);
+    },
+  },
 });
 </script>

@@ -27,8 +27,10 @@
 
 <script lang="ts">
 import Vue from "vue";
+import AppBarItem from "./AppBarItem.vue";
 
 export default Vue.extend({
+  components: { AppBarItem },
   name: "DefaultAccount",
   data: () => ({
     profile: [
